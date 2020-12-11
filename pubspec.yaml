@@ -1,8 +1,8 @@
 name: bulksmszw
 description: bulksmszw api, a port for bulksmszw-api python library. Send bulk sms using bulksmsweb services
-version: 0.0.1
+version: 1.0.0
 author: Donald Chinhuru<donychinhuru@gmail.com>
-homepage: https://github.com/DonnC
+homepage: https://github.com/DonnC/bulksmszw
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

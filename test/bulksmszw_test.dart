@@ -3,11 +3,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:bulksmszw/bulksmszw.dart';
 
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
-    expect(() => calculator.addOne(null), throwsNoSuchMethodError);
+  test('make request: return ApiResponse instance', () async {
+    final api = BulkSmsZw(
+      bulksmsWebKey: 'hw8eow-fake-key-bq232Qsa3',
+      bulksmsWebName: 'api-name',
+    );
+
+    final response = await api.send(
+      message: 'hello from flutter-test',
+      recipients: ['263770000000', '#flutter', '263773000000'],
+    );
+
+    expect(response, isInstanceOf<ApiResponse>());
   });
 }
