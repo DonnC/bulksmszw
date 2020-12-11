@@ -1,4 +1,9 @@
 # [bulksmszw](http://www.bulksmsweb.com/)
+
+<img src="https://img.shields.io/pub/v/bulksmszw?style=for-the-badge">
+<img src="https://img.shields.io/github/last-commit/DonnC/bulksmszw">
+<img src="https://img.shields.io/twitter/url?label=donix22&style=social&url=https%3A%2F%2Ftwitter.com%2Fdonix_22">
+
 A flutter or dart plugin for developers to use the `bulksmsweb` api services
 
 * bulksmszw api, a port for [bulksmszw-api python library](https://github.com/DonnC/BulkSmsZW-Api). Send bulk sms using bulksmsweb services
@@ -80,6 +85,7 @@ Api changes are available on [CHANGELOG](CHANGELOG.md)
 ### Additionals
 - features and pr and contributions are welcome.
 - api docs for bulksmsweb at [HTTP API INTEGRATION DOC](http://portal.bulksmsweb.com/downloads/BulkSMS-API.pdf)
+- *unofficial bulksmsweb package
 
 ## Getting Started
 
