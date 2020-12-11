@@ -10,7 +10,7 @@ A flutter or dart plugin for developers to use the `bulksmsweb` api services
 - Use your `webservices token` as `bulksmsWebKey` and registered `username` as `bulksmsWebName`
 
 ## Usage
-[Example]()
+[Example](https://github.com/DonnC/bulksmszw/tree/main/example)
 
 # Screenshot
 <table>
