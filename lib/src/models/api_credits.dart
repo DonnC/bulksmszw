@@ -2,8 +2,8 @@ import 'dart:convert';
 
 /// bulksmsweb credit response model
 class ApiCredits {
-  final String status;
-  final String error;
+  final String? status;
+  final String? error;
   // ignore: non_constant_identifier_names
   final dynamic error_string;
   final dynamic timestamp;
@@ -19,12 +19,12 @@ class ApiCredits {
   });
 
   ApiCredits copyWith({
-    String status,
-    String error,
+    String? status,
+    String? error,
     // ignore: non_constant_identifier_names
-    String error_string,
-    int timestamp,
-    int credit,
+    String? error_string,
+    int? timestamp,
+    int? credit,
   }) {
     return ApiCredits(
       status: status ?? this.status,
@@ -45,11 +45,9 @@ class ApiCredits {
     };
   }
 
-  factory ApiCredits.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-  
+  factory ApiCredits.fromMap(Map<String, dynamic>? map) {
     return ApiCredits(
-      status: map['status'],
+      status: map!['status'],
       error: map['error'],
       error_string: map['error_string'],
       timestamp: map['timestamp'],
@@ -59,7 +57,8 @@ class ApiCredits {
 
   String toJson() => json.encode(toMap());
 
-  factory ApiCredits.fromJson(String source) => ApiCredits.fromMap(json.decode(source));
+  factory ApiCredits.fromJson(String source) =>
+      ApiCredits.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -69,21 +68,21 @@ class ApiCredits {
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
-  
+
     return o is ApiCredits &&
-      o.status == status &&
-      o.error == error &&
-      o.error_string == error_string &&
-      o.timestamp == timestamp &&
-      o.credit == credit;
+        o.status == status &&
+        o.error == error &&
+        o.error_string == error_string &&
+        o.timestamp == timestamp &&
+        o.credit == credit;
   }
 
   @override
   int get hashCode {
     return status.hashCode ^
-      error.hashCode ^
-      error_string.hashCode ^
-      timestamp.hashCode ^
-      credit.hashCode;
+        error.hashCode ^
+        error_string.hashCode ^
+        timestamp.hashCode ^
+        credit.hashCode;
   }
 }

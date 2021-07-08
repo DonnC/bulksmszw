@@ -8,9 +8,9 @@ import '../utils.dart';
 
 /// handle sending api request to bulksmsweb portal
 class Api {
-  final String url;
-  final String recipients;
-  final String message;
+  final String? url;
+  final String? recipients;
+  final String? message;
 
   Api({
     this.url,
@@ -20,7 +20,7 @@ class Api {
 
   /// make a request to bulksmsweb services to send bulksms
   // ignore: missing_return
-  Future<ApiResponse> sendRequest() async {
+  Future<ApiResponse?> sendRequest() async {
     try {
       String _url = Parse(
         quoteBody: message,
@@ -28,7 +28,7 @@ class Api {
         webUrl: url,
       ).url();
 
-      var _result = await http.post(_url);
+      var _result = await http.post(Uri.parse(_url));
 
       if (_result.statusCode == 200) {
         var _response = _checkApiMessageError(_result.body);
@@ -52,8 +52,8 @@ class Api {
             // can be success when user send message but with no credits left
             final ApiSuccess _success = _response;
 
-            if (_success.data.first.status == 'ERR' &&
-                _success.data.first.error == '200') {
+            if (_success.data!.first.status == 'ERR' &&
+                _success.data!.first.error == '200') {
               // not enough credits here
               return ApiResponse(
                 statusresponse: SMSRESPONSE.API_ERROR,
