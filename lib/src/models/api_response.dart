@@ -3,7 +3,7 @@ import '../utils.dart';
 /// custom api response model, preferred way to check api response
 class ApiResponse {
   /// returns api status code response
-  final SMSRESPONSE statusresponse;
+  final SMSRESPONSE? statusresponse;
 
   /// returns response based on caught error or on successful
   /// 
@@ -13,7 +13,7 @@ class ApiResponse {
   final dynamic apiResponse;
 
   /// return api response message information
-  final String message;
+  final String? message;
 
   ApiResponse({
     this.statusresponse,

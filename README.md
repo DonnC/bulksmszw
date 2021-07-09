@@ -35,7 +35,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  bulksmszw: ^1.0.0
+  bulksmszw: ^2.0.0-dev
 ```
 
 ## How to use

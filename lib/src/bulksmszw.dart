@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 import 'models/index.dart';
 import 'services/api.dart';
 
@@ -7,7 +5,8 @@ import 'services/api.dart';
 /// obtain authentication details from http://portal.bulksmsweb.com
 class BulkSmsZw {
   // ignore: non_constant_identifier_names
-  static String _BULKSMS_WEBSERVICE_URL = 'http://portal.bulksmsweb.com/index.php?app=ws';
+  static String _BULKSMS_WEBSERVICE_URL =
+      'http://portal.bulksmsweb.com/index.php?app=ws';
 
   // ignore: non_constant_identifier_names
   static String _SEND_SMS_OPERATION = 'pv';
@@ -21,12 +20,12 @@ class BulkSmsZw {
   /// bulksmsweb api username
   final String bulksmsWebName;
 
-  String _key;
-  String _name;
+  String? _key;
+  String? _name;
 
   BulkSmsZw({
-    @required this.bulksmsWebKey,
-    @required this.bulksmsWebName,
+    required this.bulksmsWebKey,
+    required this.bulksmsWebName,
   }) {
     _key = bulksmsWebKey.trim();
     _name = bulksmsWebName.trim();
@@ -47,8 +46,8 @@ class BulkSmsZw {
   ///   var resp = await api.send(message="Please be reminded, project deadline is next week!", recipients=['#developer', '2637xxxxxxx'], credits=true);
   /// ```
   Future<ApiResponse> send({
-    @required String message,
-    @required List<String> recipients,
+    required String message,
+    required List<String> recipients,
     bool credits: false,
     var schedule,
   }) async {
@@ -64,7 +63,7 @@ class BulkSmsZw {
       message: message + '\n',
     ).sendRequest();
 
-    return resp;
+    return resp!;
   }
 
   // ignore: non_constant_identifier_names

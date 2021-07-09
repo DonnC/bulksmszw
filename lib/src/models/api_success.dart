@@ -8,9 +8,9 @@ class ApiSuccess {
         this.timestamp,
     });
 
-    final List<Data> data;
+    final List<Data>? data;
     final dynamic errorString;
-    final int timestamp;
+    final int? timestamp;
 
     factory ApiSuccess.fromJson(String str) => ApiSuccess.fromMap(json.decode(str));
 
@@ -23,7 +23,7 @@ class ApiSuccess {
     );
 
     Map<String, dynamic> toMap() => {
-        "data": List<dynamic>.from(data.map((x) => x.toMap())),
+        "data": List<dynamic>.from(data!.map((x) => x.toMap())),
         "error_string": errorString,
         "timestamp": timestamp,
     };
@@ -38,11 +38,11 @@ class Data {
         this.to,
     });
 
-    final String status;
+    final String? status;
     final dynamic error;
-    final String smslogId;
-    final String queue;
-    final String to;
+    final String? smslogId;
+    final String? queue;
+    final String? to;
 
     factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
 

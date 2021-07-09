@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:bulksmszw/bulksmszw.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -32,9 +32,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController _message;
-  TextEditingController _recipient_1;
-  TextEditingController _recipient_2;
+  TextEditingController? _message;
+  TextEditingController? _recipient_1;
+  TextEditingController? _recipient_2;
 
   @override
   void initState() {
@@ -46,9 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    _message.dispose();
-    _recipient_1.dispose();
-    _recipient_2.dispose();
+    _message!.dispose();
+    _recipient_1!.dispose();
+    _recipient_2!.dispose();
     super.dispose();
   }
 
@@ -70,10 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _customTextField({
-    TextEditingController controller,
-    String validateError,
-    String labelText,
-    String hintText,
+    TextEditingController? controller,
+    String? validateError,
+    String? labelText,
+    String? hintText,
     TextInputType keyboardType: TextInputType.text,
     int maxLines: 1,
   }) {
@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         maxLines: maxLines,
         controller: controller,
         validator: (value) {
-          if (value.isEmpty) {
+          if (value!.isEmpty) {
             return validateError;
           }
           return null;
@@ -110,8 +110,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _sendMessage() async {
     // create a list of string of recipients | contacts
     List<String> _recipients = [
-      _recipient_1.text.trim(),
-      _recipient_2.text.trim(),
+      _recipient_1!.text.trim(),
+      _recipient_2!.text.trim(),
     ];
 
     final api = BulkSmsZw(
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
     showLoader();
 
     ApiResponse _response = await api.send(
-      message: _message.text.trim(),
+      message: _message!.text.trim(),
       recipients: _recipients,
     );
 
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // check api statusresponse
     if (_response.statusresponse == SMSRESPONSE.SUCCESS) {
-      _scaffoldKey.currentState.showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.greenAccent,
           content: new Text(
@@ -141,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
     } else {
-      _scaffoldKey.currentState.showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.red,
           content: new Text(
@@ -153,9 +153,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     setState(() {
-      _message.clear();
-      _recipient_1.clear();
-      _recipient_2.clear();
+      _message!.clear();
+      _recipient_1!.clear();
+      _recipient_2!.clear();
     });
   }
 
@@ -164,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -199,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8),
                 child: MaterialButton(
                   onPressed: () async {
-                    if (_formKey.currentState.validate()) {
+                    if (_formKey.currentState!.validate()) {
                       await _sendMessage();
                     }
                   },
